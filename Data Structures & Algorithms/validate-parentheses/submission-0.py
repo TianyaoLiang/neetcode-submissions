@@ -1,0 +1,14 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        pairs = {"(": ")", "[" : "]", "{": "}"}
+
+        for char in s:
+            if char in pairs:
+                stack.append(char)
+            else: # is a back bracket
+                if not stack or pairs[stack.pop()] != char:
+                    return False
+        
+        return not stack
+
